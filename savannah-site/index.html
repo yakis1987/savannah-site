@@ -613,6 +613,28 @@
   .card-accent { display: none; }
 
 
+
+  .style-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--bone-dim);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .style-option:has(input:checked) {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.06);
+  }
+  .style-option input { accent-color: var(--gold); }
+
   .cta-visit {
     display: flex;
     align-items: center;
@@ -1322,7 +1344,7 @@
   <a href="#studios">Shops</a>
   <a href="#guide">Tourist Guide</a>
   <a href="terms.html">Terms of Use</a>
-  <a href="tel:YOUR_NUMBER" class="nav-book">📞 Book Now</a>
+  <a href="#" class="nav-book" onclick="closeMenu();openContactModal();return false;">Book Now</a>
 </nav>
 
 <script>
@@ -1710,7 +1732,7 @@
     <div class="lead-badge">✦ TALK TO AN ARTIST</div>
     <h2 class="lead-title">NOT SURE WHERE<br>TO START?</h2>
     <p class="lead-sub">Leave your details - we'll connect you with the right artist.</p>
-    <form class="lead-form" netlify name="lead" onsubmit="handleLeadSubmit(event)">
+    <form class="lead-form" action="https://formspree.io/f/maqzqejk" method="POST" onsubmit="handleLeadSubmit(event)">
       <input class="lead-input" type="text" name="name" placeholder="Your name" required>
       <input class="lead-input" type="tel" name="phone" placeholder="Your phone number" required>
       <button type="submit" class="lead-submit">Find My Artist →</button>
@@ -1760,8 +1782,7 @@
   <div class="about-cta">
     <p class="about-cta-label">Not sure where to start? We'll find your perfect match.</p>
     <div class="about-cta-btns">
-      <a href="tel:YOUR_NUMBER" class="btn-primary">📞 Call Us</a>
-      <a href="sms:YOUR_NUMBER" class="btn-secondary">💬 Text Us</a>
+      <a href="#" class="btn-primary" onclick="openContactModal();return false;">Find My Artist</a>
     </div>
   </div>
 </div>
@@ -1820,7 +1841,7 @@
 <div class="sticky-cta">
   <p class="sticky-cta-text">Ready to get tattooed? We'll match you with the right artist.</p>
   <div class="sticky-cta-btns">
-    <a href="tel:YOUR_NUMBER">📞 Find My Artist</a>
+    <a href="#" onclick="openContactModal();return false;">Find My Artist</a>
   </div>
 </div>
 
@@ -1844,7 +1865,7 @@
     <button class="modal-close" onclick="closeCollabModal()">✕</button>
     <h3 class="modal-title">GET LISTED</h3>
     <p class="modal-sub">Tattoo artist or shop owner? Let's work together.</p>
-    <form class="lead-form" netlify name="collab" onsubmit="handleCollabSubmit(event)">
+    <form class="lead-form" action="https://formspree.io/f/maqzqejk" method="POST" onsubmit="handleCollabSubmit(event)">
       <input class="lead-input" type="text" name="name" placeholder="Your name" required>
       <input class="lead-input" type="tel" name="phone" placeholder="Phone number" required>
       <div style="display:flex;gap:10px;">
@@ -1886,6 +1907,56 @@ function handleCollabSubmit(e) {
   e.preventDefault();
   document.querySelector('#collabModal .lead-form').style.display = 'none';
   document.getElementById('collabSuccess').style.display = 'block';
+}
+</script>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeContactModal()">✕</button>
+    <h3 class="modal-title">LET'S TALK INK</h3>
+    <p class="modal-sub">Leave your details — we'll match you with the right artist.</p>
+    <form class="lead-form" id="contactForm" action="https://formspree.io/f/maqzqejk" method="POST" onsubmit="handleContactSubmit(event)">
+      <input class="lead-input" type="text" name="name" placeholder="Your name" required>
+      <input class="lead-input" type="tel" name="phone" placeholder="Your phone number" required>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-family:var(--mono);font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;opacity:0.8;">Style</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <label class="style-option"><input type="radio" name="style" value="Fine Line"> Fine Line</label>
+          <label class="style-option"><input type="radio" name="style" value="Traditional"> Traditional</label>
+          <label class="style-option"><input type="radio" name="style" value="Realism"> Realism</label>
+          <label class="style-option"><input type="radio" name="style" value="Color"> Color</label>
+          <label class="style-option"><input type="radio" name="style" value="Blackwork"> Blackwork</label>
+          <label class="style-option"><input type="radio" name="style" value="Not Sure"> Not Sure Yet</label>
+        </div>
+      </div>
+      <textarea class="lead-input" name="description" placeholder="Tell us about your idea (optional)" rows="3" style="resize:none;font-family:var(--mono);font-size:12px;"></textarea>
+      <button type="submit" class="lead-submit">Send My Details →</button>
+    </form>
+    <div class="modal-success" id="contactSuccess" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:36px;margin-bottom:12px;">✦</div>
+      <p style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--bone-dim);">We'll be in touch within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function openContactModal() {
+  document.getElementById('contactModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeContactModal() {
+  document.getElementById('contactModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('contactModal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
+function handleContactSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
 }
 </script>
 </body>
