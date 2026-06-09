@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savannah Tattoo Insider — Weekly Newsletter</title>
+<meta name="description" content="Subscribe to the Savannah Best Tattoo weekly newsletter — tattoo news, style guides, and studio updates from Savannah GA.">
+<link rel="canonical" href="https://savannahbesttattoo.com/newsletter.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --bone: #f0ebe2;
+    --bone-dim: #c9c0b0;
+    --gold: #c9a84c;
+    --serif: 'Cormorant Garamond', serif;
+    --mono: 'DM Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--ink); color: var(--bone); font-family: var(--serif); min-height: 100vh; display: flex; flex-direction: column; }
+  header { padding: 20px 24px; border-bottom: 1px solid rgba(240,235,226,0.08); display: flex; align-items: center; justify-content: space-between; }
+  .header-back { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--bone-dim); text-decoration: none; text-transform: uppercase; }
+  .header-back:hover { color: var(--gold); }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
+  .card { width: 100%; max-width: 480px; text-align: center; }
+  .card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+  .card-title { font-family: var(--display); font-size: 48px; letter-spacing: 0.05em; color: var(--bone); margin-bottom: 8px; line-height: 1; }
+  .card-sub { font-family: var(--serif); font-size: 17px; font-weight: 300; color: var(--bone-dim); margin-bottom: 36px; line-height: 1.6; }
+  .nl-form { display: flex; flex-direction: column; gap: 12px; }
+  .nl-input { background: rgba(240,235,226,0.05); border: 1px solid rgba(240,235,226,0.15); border-radius: 10px; padding: 14px 18px; font-family: var(--mono); font-size: 13px; color: var(--bone); outline: none; transition: border-color 0.2s; }
+  .nl-input:focus { border-color: var(--gold); }
+  .nl-input::placeholder { color: var(--bone-dim); opacity: 0.6; }
+  .nl-btn { background: var(--gold); color: var(--ink); border: none; border-radius: 10px; padding: 15px 24px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+  .nl-btn:hover { background: #dbbf6a; }
+  .nl-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .success { display: none; text-align: center; padding: 32px 0; }
+  .success-icon { font-size: 40px; margin-bottom: 16px; }
+  .success-title { font-family: var(--display); font-size: 32px; color: var(--gold); margin-bottom: 8px; }
+  .success-sub { font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--bone-dim); }
+  .privacy { font-family: var(--mono); font-size: 10px; color: var(--bone-dim); opacity: 0.5; margin-top: 16px; letter-spacing: 0.05em; }
+  footer { padding: 24px; text-align: center; border-top: 1px solid rgba(240,235,226,0.06); }
+  .footer-copy { font-family: var(--mono); font-size: 10px; color: var(--bone-dim); opacity: 0.4; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="header-back">← Savannah Best Tattoo</a>
+</header>
+
+<main>
+  <div class="card">
+    <p class="card-label">✦ Weekly Updates</p>
+    <h1 class="card-title">SAVANNAH<br>TATTOO<br>INSIDER</h1>
+    <p class="card-sub">Style guides, studio news, and artist spotlights — straight to your inbox every week.</p>
+
+    <form class="nl-form" id="nlForm">
+      <input class="nl-input" type="text" name="name" placeholder="Your name" required>
+      <input class="nl-input" type="email" name="email" placeholder="Your email address" required>
+      <button type="submit" class="nl-btn" id="nlBtn">Subscribe — It's Free →</button>
+    </form>
+
+    <div class="success" id="nlSuccess">
+      <div class="success-icon">✦</div>
+      <p class="success-title">YOU'RE IN</p>
+      <p class="success-sub">Welcome to the Savannah Tattoo Insider.<br>First issue coming your way soon.</p>
+    </div>
+
+    <p class="privacy">No spam. Unsubscribe anytime.</p>
+  </div>
+</main>
+
+<footer>
+  <p class="footer-copy">© 2026 Savannah Best Tattoo</p>
+</footer>
+
+<script>
+document.getElementById('nlForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('nlBtn');
+  btn.disabled = true;
+  btn.textContent = 'Subscribing...';
+
+  // Submit to MailerLite
+  var name = document.querySelector('#nlForm input[name="name"]').value;
+  var email = document.querySelector('#nlForm input[name="email"]').value;
+
+  fetch('https://assets.mailerlite.com/jsonp/2416847/forms/189712726939927910/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'fields[email]=' + encodeURIComponent(email) + '&fields[name]=' + encodeURIComponent(name) + '&ml-submit=1&anticsrf=true'
+  }).then(function() {
+    document.getElementById('nlForm').style.display = 'none';
+    document.getElementById('nlSuccess').style.display = 'block';
+  }).catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Subscribe — It's Free →';
+    alert('Something went wrong. Please try again.');
+  });
+});
+</script>
+
+</body>
+</html>

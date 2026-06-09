@@ -1906,7 +1906,7 @@
   <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;color:#c9a84c;text-transform:uppercase;margin-bottom:12px;">✦ Weekly Updates</p>
   <p style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#fafafa;margin-bottom:8px;">Savannah Tattoo Insider</p>
   <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;color:#c9c0b0;margin-bottom:24px;">Weekly tattoo news, style guides, and Savannah studio updates.</p>
-  <a href="first-tattoo-guide-savannah.html#newsletter-section" style="display:inline-flex;align-items:center;gap:8px;background:#c9a84c;color:#0a0a0a;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:10px;">Get the weekly tattoo newsletter →</a>
+  <a href="newsletter.html" style="display:inline-flex;align-items:center;gap:8px;background:#c9a84c;color:#0a0a0a;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:10px;">Get the weekly tattoo newsletter →</a>
 </section>
 
 <footer>
@@ -1958,13 +1958,25 @@ document.getElementById('collabModal').addEventListener('click', function(e) {
 });
 function handleLeadSubmit(e) {
   e.preventDefault();
-  document.querySelector('.lead-form').style.display = 'none';
-  document.getElementById('leadSuccess').style.display = 'block';
+  var form = document.querySelector('#talkModal .lead-form') || document.querySelector('.lead-form');
+  var btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = 'Sending...';
+  fetch('https://formspree.io/f/maqzqejk', {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}})
+  .then(function(r){
+    if(r.ok){ form.style.display='none'; document.getElementById('leadSuccess').style.display='block'; }
+    else { btn.disabled=false; btn.textContent='Send My Details →'; alert('Something went wrong. Please try again.'); }
+  }).catch(function(){ btn.disabled=false; btn.textContent='Send My Details →'; alert('Something went wrong. Please try again.'); });
 }
 function handleCollabSubmit(e) {
   e.preventDefault();
-  document.querySelector('#collabModal .lead-form').style.display = 'none';
-  document.getElementById('collabSuccess').style.display = 'block';
+  var form = document.querySelector('#collabModal .lead-form');
+  var btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = 'Sending...';
+  fetch('https://formspree.io/f/maqzqejk', {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}})
+  .then(function(r){
+    if(r.ok){ form.style.display='none'; document.getElementById('collabSuccess').style.display='block'; }
+    else { btn.disabled=false; btn.textContent='Get Listed →'; alert('Something went wrong. Please try again.'); }
+  }).catch(function(){ btn.disabled=false; btn.textContent='Get Listed →'; alert('Something went wrong. Please try again.'); });
 }
 </script>
 
