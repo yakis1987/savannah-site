@@ -2014,8 +2014,28 @@ document.getElementById('contactModal').addEventListener('click', function(e) {
 });
 function handleContactSubmit(e) {
   e.preventDefault();
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('contactSuccess').style.display = 'block';
+  const form = document.getElementById('contactForm');
+  const btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  fetch('https://formspree.io/f/maqzqejk', {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(r => {
+    if (r.ok) {
+      form.style.display = 'none';
+      document.getElementById('contactSuccess').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send My Details →';
+      alert('Something went wrong. Please try again.');
+    }
+  }).catch(() => {
+    btn.disabled = false;
+    btn.textContent = 'Send My Details →';
+    alert('Something went wrong. Please try again.');
+  });
 }
 </script>
 </body>
