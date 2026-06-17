@@ -183,6 +183,24 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
 @media(max-width:500px){.gallery-cta{flex-direction:column;text-align:center;}.gallery-cta-btns{width:100%;}.gallery-cta-btns a{flex:1;justify-content:center;}}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--ink-soft);border:1px solid rgba(201,168,76,0.22);border-radius:16px;padding:32px 28px;width:100%;max-width:480px;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:var(--bone-dim);cursor:pointer;font-family:var(--mono);}
+.modal-close:hover{color:var(--gold);}
+.modal-title{font-family:var(--display);font-size:28px;letter-spacing:0.04em;color:var(--bone);margin-bottom:8px;}
+.modal-sub{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--bone-dim);margin-bottom:20px;}
+.lead-form{display:flex;flex-direction:column;gap:12px;}
+.lead-input{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:12px 16px;color:var(--bone);font-family:var(--mono);font-size:13px;letter-spacing:0.05em;outline:none;width:100%;}
+.lead-input::placeholder{color:var(--bone-dim);opacity:0.4;}
+.lead-input:focus{border-color:rgba(201,168,76,0.6);}
+.lead-submit{background:var(--gold);color:var(--ink);font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:0.1em;border:none;border-radius:10px;padding:14px 24px;cursor:pointer;transition:background 0.2s;}
+.lead-submit:hover{background:var(--gold-light);}
+.style-option{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--bone-dim);padding:10px 12px;border:1px solid rgba(201,168,76,0.15);border-radius:8px;cursor:pointer;transition:all 0.2s;}
+.style-option:has(input:checked){border-color:rgba(201,168,76,0.6);background:rgba(201,168,76,0.08);color:var(--gold);}
+.style-option input{accent-color:var(--gold);}
 </style>
 </head>
 <body>
@@ -215,7 +233,7 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
     </div>
     <div class="hero-btns">
       <a href="https://web.getporter.io/artist/savannah-artz" class="btn-primary" ontouchstart="">📅 Book Now</a>
-      <a href="#lead-form" class="btn-secondary" ontouchstart="">✦ Claim Your Spot</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
   <div class="hero-right">
@@ -227,7 +245,7 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
 <div class="rating-bar">
   <div class="rating-item"><span class="rating-stars">★★★★★</span><span class="rating-text">5.0 · Google Reviews</span></div>
   <div class="rating-sep"></div>
-  <div class="rating-item"><span class="rating-text">3+ Years Experience</span></div>
+  <div class="rating-item"><span class="rating-text">5+ Years Experience</span></div>
   <div class="rating-sep"></div>
   <div class="rating-item"><span class="rating-text">100% Custom Designs</span></div>
   <div class="rating-sep"></div>
@@ -236,9 +254,9 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
 
 <div class="section">
   <div class="info-strip">
-    <div class="info-item"><span class="info-icon">📍</span><div><div class="info-label">Location</div><div class="info-value">602 E. Henry St., Savannah GA 31401</div></div></div>
+    <div class="info-item"><span class="info-icon">📍</span><div><div class="info-label">Location</div><div class="info-value" style="text-align:center;">602 E. Henry St.<br>Savannah, GA 31401</div></div></div>
     <div class="info-item"><span class="info-icon">🕐</span><div><div class="info-label">Hours</div><div class="info-value">Mon–Wed, Fri–Sat · 12PM–8PM</div></div></div>
-    <div class="info-item"><span class="info-icon">✉️</span><div><div class="info-label">Contact</div><div class="info-value"><a href="mailto:savannahartztattoos@gmail.com">savannahartztattoos@gmail.com</a></div></div></div>
+    <div class="info-item"><span class="info-icon">📅</span><div><div class="info-label">Booking</div><div class="info-value">By appointment · Book online</div></div></div>
     <div class="info-item"><span class="info-icon">🎨</span><div><div class="info-label">Specialty</div><div class="info-value">Custom · Blackwork · Fine Line</div></div></div>
   </div>
 </div>
@@ -271,7 +289,7 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
     <div class="gallery-cta-text"><strong>READY TO BOOK?</strong></div>
     <div class="gallery-cta-btns">
       <a href="https://web.getporter.io/artist/savannah-artz" class="btn-primary" ontouchstart="">📅 Book Now</a>
-      <a href="#lead-form" class="btn-secondary" ontouchstart="">✦ Claim Your Spot</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
 </div>
@@ -337,7 +355,7 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
       <p>Her process is intentional: every design is kept private until the appointment, ensuring that first reactions are genuine. It's an approach that has earned her a loyal following of clients who travel from across the country to sit in her chair.</p>
     </div>
     <div class="about-facts">
-      <div class="fact"><span class="fact-icon">🎨</span><div><div class="fact-label">Experience</div><div class="fact-value">3+ years custom tattooing · Lifelong artist</div></div></div>
+      <div class="fact"><span class="fact-icon">🎨</span><div><div class="fact-label">Experience</div><div class="fact-value">5+ years custom tattooing · Lifelong artist</div></div></div>
       <div class="fact"><span class="fact-icon">📍</span><div><div class="fact-label">Studio</div><div class="fact-value">Dollhouse Tattoos · 602 E. Henry St., Savannah GA</div></div></div>
       <div class="fact"><span class="fact-icon">🕐</span><div><div class="fact-label">Hours</div><div class="fact-value">Mon–Wed, Fri–Sat · 12PM–8PM</div></div></div>
       <div class="fact"><span class="fact-icon">✦</span><div><div class="fact-label">Process</div><div class="fact-value">100% custom · Design revealed at appointment</div></div></div>
@@ -387,7 +405,7 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
     <p class="cta-sub">Leave your details and we'll be in touch to set up your appointment.</p>
     <div class="cta-btns">
       <a href="https://web.getporter.io/artist/savannah-artz" class="btn-primary" ontouchstart="">📅 Book Now</a>
-      <a href="index.html#contact" class="btn-secondary" ontouchstart="">✦ Claim Your Spot</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
 </div>
@@ -403,7 +421,7 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
   <div class="sticky-text">Book Savannah Artz</div>
   <div class="sticky-btns">
     <a href="https://web.getporter.io/artist/savannah-artz" ontouchstart="">📅 Book Now</a>
-    <a href="#lead-form" ontouchstart="">✦ Claim Your Spot</a>
+    <a href="#" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
   </div>
 </div>
 
@@ -414,6 +432,78 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
   <img id="lightbox-img" src="" alt="">
   <button class="lightbox-next" onclick="shiftLightbox(1)">&#8594;</button>
 </div>
+
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeContactModal()">✕</button>
+    <h3 class="modal-title">CLAIM YOUR SPOT</h3>
+    <p class="modal-sub">Leave your details and we'll be in touch to set up your appointment with Savannah.</p>
+    <form class="lead-form" id="contactForm" action="https://formspree.io/f/maqzqejk" method="POST" onsubmit="handleContactSubmit(event)">
+      <input class="lead-input" type="text" name="name" placeholder="Your name" required>
+      <input class="lead-input" type="tel" name="phone" placeholder="Your phone number">
+      <input class="lead-input" type="email" name="email" placeholder="Your email address">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <label style="font-family:var(--mono);font-size:10px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Style</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <label class="style-option"><input type="radio" name="style" value="Fine Line"> Fine Line</label>
+          <label class="style-option"><input type="radio" name="style" value="Blackwork"> Blackwork</label>
+          <label class="style-option"><input type="radio" name="style" value="Stippling"> Stippling</label>
+          <label class="style-option"><input type="radio" name="style" value="Large Scale"> Large Scale</label>
+          <label class="style-option"><input type="radio" name="style" value="Illustrative"> Illustrative</label>
+          <label class="style-option"><input type="radio" name="style" value="Not Sure"> Not Sure Yet</label>
+        </div>
+      </div>
+      <textarea class="lead-input" name="description" placeholder="Tell us about your idea (optional)" rows="3" style="resize:none;font-family:var(--mono);font-size:12px;"></textarea>
+      <input type="hidden" name="artist" value="Savannah Artz">
+      <button type="submit" class="lead-submit">Claim Your Spot →</button>
+    </form>
+    <div id="contactSuccess" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:36px;margin-bottom:12px;">✦</div>
+      <p style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--bone-dim);">We'll be in touch within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openContactModal() {
+  document.getElementById('contactModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeContactModal() {
+  document.getElementById('contactModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('contactModal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contactForm');
+  const btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  fetch('https://formspree.io/f/maqzqejk', {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(r => {
+    if (r.ok) {
+      form.style.display = 'none';
+      document.getElementById('contactSuccess').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Claim Your Spot →';
+      alert('Something went wrong. Please try again.');
+    }
+  }).catch(() => {
+    btn.disabled = false;
+    btn.textContent = 'Claim Your Spot →';
+    alert('Something went wrong. Please try again.');
+  });
+}
+</script>
 
 <script>
 let currentIndex = 0;
