@@ -2,15 +2,7 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Q9XP12CJ">
-function toggleGallery() {
-  var extra = document.getElementById('gallery-extra');
-  var btn = document.getElementById('btn-toggle');
-  var isExpanded = extra.classList.contains('visible');
-  extra.classList.toggle('visible');
-  btn.innerHTML = isExpanded ? '&#9660; View more photos' : '&#9650; Show less';
-}
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Q9XP12CJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -296,17 +288,38 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
     Lusiana's work draws from the natural world — botanical forms, organic compositions, and the quiet detail of living things. Portfolio images coming soon — reach out directly to see her full body of work.
   </p>
   <div class="gallery-grid">
-    
+    <div class="gallery-item" data-style="Illustrative — Shells">
+      <img src="lusiana/img-3.webp" alt="Fine line seashell collection tattoo by Lusiana Morales Savannah" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Fine Line — Botanical Sleeve">
+      <img src="lusiana/img-4.webp" alt="Fine line botanical sleeve tattoo Lusiana Morales Savannah GA" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Black & Grey — Custom">
+      <img src="lusiana/img-5.webp" alt="Black grey shark rocket tattoo Savannah GA" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Fine Line — Lace Umbrella">
+      <img src="lusiana/img-6.webp" alt="Fine line lace umbrella tattoo illustrative Savannah" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Fine Line — Stamp">
+      <img src="lusiana/img-7.webp" alt="Fine line Tennessee stamp tattoo Lusiana Morales" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Fine Line — Vine">
+      <img src="lusiana/img-8.webp" alt="Fine line vine botanical tattoo Savannah GA" loading="lazy">
+    </div>
+  </div>
+  <div class="gallery-extra" id="gallery-extra">
+    <div class="gallery-item" data-style="Fine Line — Floral">
+      <img src="lusiana/img-9.webp" alt="Fine line wildflower tattoo Lusiana Morales Savannah" loading="lazy">
+    </div>
   </div>
   <button class="show-more-btn" id="btn-toggle" onclick="toggleGallery()">&#9660; View more photos</button>
   <div class="gallery-cta">
     <div class="gallery-cta-text"><strong>READY TO BOOK?</strong></div>
     <div class="gallery-cta-btns">
       <a href="mailto:lusiana.tattoo@gmail.com?subject=Book a Tattoo Session" class="btn-primary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_book_gallery'});">✉ Book a Session</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_claim_gallery'});openContactModal();return false;">❆ Claim Your Spot</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_claim_gallery'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
-</div>
 </div>
 
 <hr class="divider">
@@ -479,6 +492,13 @@ function handleContactSubmit(e) {
     btn.textContent = 'Claim Your Spot →';
     alert('Something went wrong. Please try again.');
   });
+}
+function toggleGallery() {
+  var extra = document.getElementById('gallery-extra');
+  var btn = document.getElementById('btn-toggle');
+  var isExpanded = extra.classList.contains('visible');
+  extra.classList.toggle('visible');
+  btn.innerHTML = isExpanded ? '&#9660; View more photos' : '&#9650; Show less';
 }
 </script>
 

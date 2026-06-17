@@ -2,15 +2,7 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Q9XP12CJ">
-function toggleGallery() {
-  var extra = document.getElementById('gallery-extra');
-  var btn = document.getElementById('btn-toggle');
-  var isExpanded = extra.classList.contains('visible');
-  extra.classList.toggle('visible');
-  btn.innerHTML = isExpanded ? '&#9660; View more photos' : '&#9650; Show less';
-}
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Q9XP12CJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -240,17 +232,41 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
   <p class="section-label">The Work</p>
   <h2 class="section-title">PORTFOLIO <em>Highlights</em></h2>
   <div class="gallery-grid">
-    
+    <div class="gallery-item" data-style="Color · American Flag">
+      <img src="dropdead/img-3.webp" alt="American flag sleeve tattoo Drop Dead Tattoo Savannah" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Black & Grey · Realism">
+      <img src="dropdead/img-4.webp" alt="Eye realism tattoo Drop Dead Tattoo Savannah GA" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Fine Line · Illustrative">
+      <img src="dropdead/img-5.webp" alt="Fine line boat linework tattoo Drop Dead Tattoo" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Watercolor · Wave">
+      <img src="dropdead/img-6.webp" alt="Watercolor wave tattoo Drop Dead Tattoo Savannah" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Traditional · Color">
+      <img src="dropdead/img-7.webp" alt="Cat neotraditional tattoo Drop Dead Tattoo Savannah GA" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Traditional · Bird">
+      <img src="dropdead/img-8.webp" alt="Traditional cardinal bird tattoo Drop Dead Tattoo GA" loading="lazy">
+    </div>
+  </div>
+  <div class="gallery-extra" id="gallery-extra">
+    <div class="gallery-item" data-style="Neotraditional · Color">
+      <img src="dropdead/img-9.webp" alt="Traditional panther dagger tattoo Drop Dead Tattoo Savannah" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Black & Grey · Octopus">
+      <img src="dropdead/img-10.webp" alt="Black grey octopus tattoo Drop Dead Tattoo Abercorn" loading="lazy">
+    </div>
   </div>
   <button class="show-more-btn" id="btn-toggle" onclick="toggleGallery()">&#9660; View more photos</button>
   <div class="gallery-cta">
     <div class="gallery-cta-text"><strong>READY TO BOOK?</strong></div>
     <div class="gallery-cta-btns">
       <a href="tel:9122011926" class="btn-primary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'drop_dead_call_gallery'});">📞 Call Now</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'dropdead_claim_gallery'});openContactModal();return false;">❆ Claim Your Spot</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'dropdead_claim_gallery'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
-</div>
 </div>
 
 <hr class="divider">
@@ -414,6 +430,13 @@ function handleContactSubmit(e) {
     btn.textContent = 'Claim Your Spot →';
     alert('Something went wrong. Please try again.');
   });
+}
+function toggleGallery() {
+  var extra = document.getElementById('gallery-extra');
+  var btn = document.getElementById('btn-toggle');
+  var isExpanded = extra.classList.contains('visible');
+  extra.classList.toggle('visible');
+  btn.innerHTML = isExpanded ? '&#9660; View more photos' : '&#9650; Show less';
 }
 </script>
 

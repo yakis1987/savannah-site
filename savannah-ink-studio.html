@@ -2,15 +2,7 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Q9XP12CJ">
-function toggleGallery() {
-  var extra = document.getElementById('gallery-extra');
-  var btn = document.getElementById('btn-toggle');
-  var isExpanded = extra.classList.contains('visible');
-  extra.classList.toggle('visible');
-  btn.innerHTML = isExpanded ? '&#9660; View more photos' : '&#9650; Show less';
-}
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Q9XP12CJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -240,17 +232,41 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
   <p class="section-label">The Work</p>
   <h2 class="section-title">PORTFOLIO <em>Highlights</em></h2>
   <div class="gallery-grid">
-    
+    <div class="gallery-item" data-style="Traditional - Color">
+      <img src="savannahink/img-3.webp" alt="Traditional lighthouse Savannah Ink" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Black & Grey - Floral">
+      <img src="savannahink/img-4.webp" alt="Black grey floral Savannah Ink GA" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Geometric - Dotwork">
+      <img src="savannahink/img-5.webp" alt="Geometric sacred geometry Savannah Ink" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Mandala - Fine Line">
+      <img src="savannahink/img-6.webp" alt="Fine line mandala Savannah Ink" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Neotraditional - Color">
+      <img src="savannahink/img-7.webp" alt="Colorful owl Savannah Ink Georgia" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Japanese - Traditional">
+      <img src="savannahink/img-8.webp" alt="Japanese skull waves Savannah Ink" loading="lazy">
+    </div>
+  </div>
+  <div class="gallery-extra" id="gallery-extra">
+    <div class="gallery-item" data-style="Mandala - Ornamental">
+      <img src="savannahink/img-9.webp" alt="Mandala ornamental sleeve Savannah Ink" loading="lazy">
+    </div>
+    <div class="gallery-item" data-style="Tribal - Polynesian">
+      <img src="savannahink/img-10.webp" alt="Polynesian tribal chest Savannah Ink" loading="lazy">
+    </div>
   </div>
   <button class="show-more-btn" id="btn-toggle" onclick="toggleGallery()">&#9660; View more photos</button>
   <div class="gallery-cta">
     <div class="gallery-cta-text"><strong>READY TO BOOK?</strong></div>
     <div class="gallery-cta-btns">
       <a href="tel:9122336988" class="btn-primary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_ink_call_gallery'});">📞 Call Now</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannahink_claim_gallery'});openContactModal();return false;">❆ Claim Your Spot</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannahink_claim_gallery'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
-</div>
 </div>
 
 <hr class="divider">
@@ -413,6 +429,13 @@ function handleContactSubmit(e) {
     btn.textContent = 'Claim Your Spot →';
     alert('Something went wrong. Please try again.');
   });
+}
+function toggleGallery() {
+  var extra = document.getElementById('gallery-extra');
+  var btn = document.getElementById('btn-toggle');
+  var isExpanded = extra.classList.contains('visible');
+  extra.classList.toggle('visible');
+  btn.innerHTML = isExpanded ? '&#9660; View more photos' : '&#9650; Show less';
 }
 </script>
 
