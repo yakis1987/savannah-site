@@ -186,7 +186,7 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
       <text x="44" y="31" font-family="Bebas Neue,sans-serif" font-size="12" fill="#f0ebe2" letter-spacing="2.5">BEST TATTOO</text>
     </svg>
   </div>
-  <a href="tel:9122336988" class="header-btn">📞 Call Now</a>
+  <a href="tel:9122336988" class="header-btn" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_ink_header'});">📞 Call Now</a>
 </header>
 
 <section class="hero">
@@ -201,8 +201,8 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
       <div class="hero-meta-item"><span class="dot">★</span>4.9 - 522 Reviews - 96% Recommend</div>
     </div>
     <div class="hero-btns">
-      <a href="tel:9122336988" class="btn-primary">📞 Call Now</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
+      <a href="tel:9122336988" class="btn-primary" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_ink_hero'});">📞 Call Now</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_ink_claim_hero'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
   <div class="hero-right">
@@ -344,8 +344,8 @@ TATTOO location"></iframe>
     <h2 class="cta-title">READY TO BOOK?</h2>
     <p class="cta-sub">Walk-ins welcome - Tue-Sat from 12pm - Call to check availability</p>
     <div class="cta-btns">
-      <a href="tel:9122336988" class="btn-primary">📞 Call Now</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
+      <a href="tel:9122336988" class="btn-primary" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_ink_bottom'});">📞 Call Now</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_ink_claim_bottom'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
 </div>
@@ -353,8 +353,8 @@ TATTOO location"></iframe>
 <div class="sticky-cta">
   <p class="sticky-text">Savannah Ink - 3001 Bull Street</p>
   <div class="sticky-btns">
-    <a href="tel:9122336988">📞 Call Us</a>
-    <a href="#" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
+    <a href="tel:9122336988" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_ink_call_sticky'});">📞 Call Us</a>
+    <a href="#" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_ink_claim_sticky'});openContactModal();return false;">✦ Claim Your Spot</a>
   </div>
 </div>
 
@@ -417,6 +417,7 @@ function handleContactSubmit(e) {
     headers: { 'Accept': 'application/json' }
   }).then(r => {
     if (r.ok) {
+      gtag('event','form_submission',{event_category:'conversion',event_label:'savannah_ink_form'});
       form.style.display = 'none';
       document.getElementById('contactSuccess').style.display = 'block';
     } else {

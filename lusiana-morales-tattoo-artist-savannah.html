@@ -235,7 +235,7 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
       <text x="44" y="31" font-family="Bebas Neue,sans-serif" font-size="12" fill="#f0ebe2" letter-spacing="2.5">BEST TATTOO</text>
     </svg>
   </div>
-  <a href="mailto:lusiana.tattoo@gmail.com?subject=Book a Tattoo Session" class="header-btn">✉ Book a Session</a>
+  <a href="mailto:lusiana.tattoo@gmail.com?subject=Book a Tattoo Session" class="header-btn" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_header'});">✉ Book a Session</a>
 </header>
 
 <section class="hero">
@@ -250,8 +250,8 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
       <div class="hero-meta-item"><span class="dot">✦</span>SCAD MFA Graduate — Fine Artist &amp; Tattoo Artist</div>
     </div>
     <div class="hero-btns">
-      <a href="mailto:lusiana.tattoo@gmail.com?subject=Book a Tattoo Session" class="btn-primary">✉ Book a Session</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
+      <a href="mailto:lusiana.tattoo@gmail.com?subject=Book a Tattoo Session" class="btn-primary" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_hero'});">✉ Book a Session</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_claim_hero'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
   <div class="hero-right">
@@ -406,8 +406,8 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
     <p class="cta-title">READY TO WORK WITH LUSIANA?</p>
     <p class="cta-sub">Reach out directly — she welcomes custom bookings and new clients.</p>
     <div class="cta-btns">
-      <a href="mailto:lusiana.tattoo@gmail.com?subject=Book a Tattoo Session" class="btn-primary">✉ Book a Session</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
+      <a href="mailto:lusiana.tattoo@gmail.com?subject=Book a Tattoo Session" class="btn-primary" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_bottom'});">✉ Book a Session</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_claim_bottom'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
 </div>
@@ -420,8 +420,8 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
 <div class="sticky-cta">
   <p class="sticky-text">Lusiana Morales — Tattoo Artist in Savannah</p>
   <div class="sticky-btns">
-    <a href="mailto:lusiana.tattoo@gmail.com?subject=Book a Tattoo Session">✉ Book</a>
-    <a href="mailto:lusiana.tattoo@gmail.com?subject=Tattoo Inquiry">Contact</a>
+    <a href="mailto:lusiana.tattoo@gmail.com?subject=Book a Tattoo Session" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_book_sticky'});">✉ Book</a>
+    <a href="#" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'lusiana_claim_sticky'});openContactModal();return false;">✦ Claim Your Spot</a>
   </div>
 </div>
 
@@ -480,6 +480,7 @@ function handleContactSubmit(e) {
     headers: { 'Accept': 'application/json' }
   }).then(r => {
     if (r.ok) {
+      gtag('event','form_submission',{event_category:'conversion',event_label:'lusiana_form'});
       form.style.display = 'none';
       document.getElementById('contactSuccess').style.display = 'block';
     } else {
