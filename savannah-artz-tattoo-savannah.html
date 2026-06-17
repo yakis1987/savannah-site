@@ -419,26 +419,18 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
 let currentIndex = 0;
 
 function getImgs() {
-  const main = Array.from(document.querySelectorAll('#gallery-artz .gal-item img'));
-  const extra = Array.from(document.querySelectorAll('#gallery-artz-extra .gal-item img'));
-  return main.concat(extra);
+  return Array.from(document.querySelectorAll('#gallery-artz .gal-item img, #gallery-artz-extra .gal-item img'));
 }
 
 function toggleGallery() {
-  const mainGrid = document.getElementById('gallery-artz');
   const extra = document.getElementById('gallery-artz-extra');
   const btn = document.getElementById('btn-artz');
-  const isExpanded = extra.dataset.expanded === 'true';
+  const isExpanded = extra.classList.contains('visible');
   if (!isExpanded) {
-    const items = Array.from(extra.querySelectorAll('.gal-item'));
-    items.forEach(item => mainGrid.appendChild(item));
-    extra.dataset.expanded = 'true';
+    extra.classList.add('visible');
     btn.innerHTML = '&#9650; Show less';
   } else {
-    const allItems = Array.from(mainGrid.querySelectorAll('.gal-item'));
-    const extraItems = allItems.slice(6);
-    extraItems.forEach(item => extra.appendChild(item));
-    extra.dataset.expanded = 'false';
+    extra.classList.remove('visible');
     btn.innerHTML = '&#9660; View more photos';
   }
 }
