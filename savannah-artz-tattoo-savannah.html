@@ -224,7 +224,7 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
       <text x="44" y="31" font-family="Bebas Neue,sans-serif" font-size="12" fill="#f0ebe2" letter-spacing="2.5">BEST TATTOO</text>
     </svg>
   </div>
-  <a href="https://web.getporter.io/artist/savannah-artz" class="header-btn" ontouchstart="">📅 Book Now</a>
+  <a href="https://web.getporter.io/artist/savannah-artz" class="header-btn" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_artz_book_header'});">📅 Book Now</a>
 </header>
 
 <div class="hero">
@@ -240,8 +240,8 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
       <div class="hero-meta-item"><span class="dot">✦</span> Blackwork · Fine Line · Stippling · Large Scale</div>
     </div>
     <div class="hero-btns">
-      <a href="https://web.getporter.io/artist/savannah-artz" class="btn-primary" ontouchstart="">📅 Book Now</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
+      <a href="https://web.getporter.io/artist/savannah-artz" class="btn-primary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_artz_book_hero'});">📅 Book Now</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_artz_claim_hero'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
   <div class="hero-right">
@@ -300,8 +300,8 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
   <div class="gallery-cta">
     <div class="gallery-cta-text"><strong>READY TO BOOK?</strong></div>
     <div class="gallery-cta-btns">
-      <a href="https://web.getporter.io/artist/savannah-artz" class="btn-primary" ontouchstart="">📅 Book Now</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
+      <a href="https://web.getporter.io/artist/savannah-artz" class="btn-primary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_artz_book_gallery'});">📅 Book Now</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_artz_claim_gallery'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
 </div>
@@ -416,8 +416,8 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
     <p class="cta-title">LET'S MAKE IT HAPPEN</p>
     <p class="cta-sub">Leave your details and we'll be in touch to set up your appointment.</p>
     <div class="cta-btns">
-      <a href="https://web.getporter.io/artist/savannah-artz" class="btn-primary" ontouchstart="">📅 Book Now</a>
-      <a href="#" class="btn-secondary" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
+      <a href="https://web.getporter.io/artist/savannah-artz" class="btn-primary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_artz_book_bottom'});">📅 Book Now</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_artz_claim_bottom'});openContactModal();return false;">✦ Claim Your Spot</a>
     </div>
   </div>
 </div>
@@ -432,8 +432,8 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
 <div class="sticky-cta">
   <div class="sticky-text">Book Savannah Artz</div>
   <div class="sticky-btns">
-    <a href="https://web.getporter.io/artist/savannah-artz" ontouchstart="">📅 Book Now</a>
-    <a href="#" ontouchstart="" onclick="openContactModal();return false;">✦ Claim Your Spot</a>
+    <a href="https://web.getporter.io/artist/savannah-artz" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_artz_book_sticky'});">📅 Book Now</a>
+    <a href="#" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'savannah_artz_claim_sticky'});openContactModal();return false;">✦ Claim Your Spot</a>
   </div>
 </div>
 
@@ -502,6 +502,7 @@ function handleContactSubmit(e) {
     headers: { 'Accept': 'application/json' }
   }).then(r => {
     if (r.ok) {
+      gtag('event','form_submission',{event_category:'conversion',event_label:'savannah_artz_form'});
       form.style.display = 'none';
       document.getElementById('contactSuccess').style.display = 'block';
     } else {
