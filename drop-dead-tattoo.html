@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Q9XP12CJ"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Q9XP12CJ">
+function toggleGallery() {
+  var extra = document.getElementById('gallery-extra');
+  var btn = document.getElementById('btn-toggle');
+  var isExpanded = extra.classList.contains('visible');
+  extra.classList.toggle('visible');
+  btn.innerHTML = isExpanded ? '&#9660; View more photos' : '&#9650; Show less';
+}
+</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -163,6 +171,15 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
 .style-option{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--bone-dim);padding:10px 12px;border:1px solid rgba(201,168,76,0.15);border-radius:8px;cursor:pointer;transition:all 0.2s;}
 .style-option:has(input:checked){border-color:rgba(201,168,76,0.6);background:rgba(201,168,76,0.08);color:var(--gold);}
 .style-option input{accent-color:var(--gold);}
+.gallery-extra{display:none;}
+.gallery-extra.visible{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:6px;}
+@media(min-width:700px){.gallery-extra.visible{grid-template-columns:repeat(4,1fr);}}
+.show-more-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px auto 0;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--bone-dim);background:transparent;border:1px solid rgba(240,235,226,0.15);padding:10px 24px;border-radius:8px;cursor:pointer;transition:all 0.2s;width:100%;}
+.show-more-btn:hover{border-color:rgba(201,168,76,0.4);color:var(--gold);}
+.gallery-cta{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:12px;}
+.gallery-cta-text strong{font-family:var(--display);font-size:20px;letter-spacing:0.04em;color:var(--bone);}
+.gallery-cta-btns{display:flex;gap:10px;flex-wrap:wrap;}
+@media(max-width:500px){.gallery-cta{flex-direction:column;text-align:center;}.gallery-cta-btns{width:100%;}.gallery-cta-btns a{flex:1;justify-content:center;}}
 </style>
 </head>
 <body>
@@ -223,31 +240,17 @@ footer{border-top:1px solid rgba(240,235,226,0.06);padding:28px 24px;text-align:
   <p class="section-label">The Work</p>
   <h2 class="section-title">PORTFOLIO <em>Highlights</em></h2>
   <div class="gallery-grid">
-    <div class="gallery-item" data-style="Color · American Flag">
-      <img src="dropdead/img-3.webp" alt="American flag sleeve tattoo Drop Dead Tattoo Savannah" loading="lazy">
-    </div>
-    <div class="gallery-item" data-style="Black & Grey · Realism">
-      <img src="dropdead/img-4.webp" alt="Eye realism tattoo Drop Dead Tattoo Savannah GA" loading="lazy">
-    </div>
-    <div class="gallery-item" data-style="Fine Line · Illustrative">
-      <img src="dropdead/img-5.webp" alt="Fine line boat linework tattoo Drop Dead Tattoo" loading="lazy">
-    </div>
-    <div class="gallery-item" data-style="Watercolor · Wave">
-      <img src="dropdead/img-6.webp" alt="Watercolor wave tattoo Drop Dead Tattoo Savannah" loading="lazy">
-    </div>
-    <div class="gallery-item" data-style="Traditional · Color">
-      <img src="dropdead/img-7.webp" alt="Cat neotraditional tattoo Drop Dead Tattoo Savannah GA" loading="lazy">
-    </div>
-    <div class="gallery-item" data-style="Traditional · Bird">
-      <img src="dropdead/img-8.webp" alt="Traditional cardinal bird tattoo Drop Dead Tattoo GA" loading="lazy">
-    </div>
-    <div class="gallery-item" data-style="Neotraditional · Color">
-      <img src="dropdead/img-9.webp" alt="Traditional panther dagger tattoo Drop Dead Tattoo Savannah" loading="lazy">
-    </div>
-    <div class="gallery-item" data-style="Black & Grey · Octopus">
-      <img src="dropdead/img-10.webp" alt="Black grey octopus tattoo Drop Dead Tattoo Abercorn" loading="lazy">
+    
+  </div>
+  <button class="show-more-btn" id="btn-toggle" onclick="toggleGallery()">&#9660; View more photos</button>
+  <div class="gallery-cta">
+    <div class="gallery-cta-text"><strong>READY TO BOOK?</strong></div>
+    <div class="gallery-cta-btns">
+      <a href="tel:9122011926" class="btn-primary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'drop_dead_call_gallery'});">📞 Call Now</a>
+      <a href="#" class="btn-secondary" ontouchstart="" onclick="gtag('event','conversion_click',{event_category:'conversion',event_label:'dropdead_claim_gallery'});openContactModal();return false;">❆ Claim Your Spot</a>
     </div>
   </div>
+</div>
 </div>
 
 <hr class="divider">
