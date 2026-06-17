@@ -50,7 +50,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 14px;display
 .hero-right{position:relative;z-index:2;display:grid;grid-template-rows:1fr 1fr;height:100svh;gap:3px;}
 @media(max-width:768px){.hero-right{grid-template-rows:unset;grid-template-columns:1fr 1fr;height:260px;gap:3px;}}
 .hero-img-wrap{overflow:hidden;position:relative;background:#161410;display:flex;align-items:center;justify-content:center;}
-.hero-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;display:block;}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;display:block;will-change:transform;}
 .hero-img-wrap:hover img{transform:scale(1.04);}
 .hero-img-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,0.3) 0%,transparent 40%);pointer-events:none;}
 .hero-img-bg{position:absolute;top:0;right:0;width:50%;height:100%;z-index:1;overflow:hidden;}
@@ -92,7 +92,7 @@ hr.divider{border:none;border-top:1px solid rgba(240,235,226,0.06);margin:0 24px
 .gallery-extra.visible{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;}
 @media(max-width:600px){.gallery-extra.visible{grid-template-columns:repeat(2,1fr);}}
 .gal-item{aspect-ratio:1;overflow:hidden;border-radius:8px;border:1px solid rgba(201,168,76,0.12);position:relative;cursor:pointer;background:#161410;display:flex;align-items:center;justify-content:center;}
-.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease,filter 0.3s;filter:brightness(0.85);display:block;}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease,filter 0.3s;filter:brightness(0.85);display:block;will-change:transform;}
 .gal-item:hover img{transform:scale(1.06);filter:brightness(1);}
 .show-more-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px auto 0;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--bone-dim);background:transparent;border:1px solid rgba(240,235,226,0.15);padding:10px 24px;border-radius:8px;cursor:pointer;transition:all 0.2s;width:100%;}
 .show-more-btn:hover{border-color:rgba(201,168,76,0.4);color:var(--gold);}
